@@ -1,0 +1,67 @@
+<div class="col-sm-11 text-center">
+  <button type="button" class="btn btn-success col-sm-2" data-toggle="modal" data-target="#input">add</button>&nbsp;
+  <button type="button" class="btn btn-danger col-sm-2" (click)="delItemId">delete</button>&nbsp;
+  <button type="button" class="btn btn-warning col-sm-2" (click)="updateInfo()" data-toggle="modal" data-target="#input">update</button>&nbsp;
+  <button type="button" class="btn btn-info col-sm-2">select</button>
+</div>
+   <div class="container-fluid">
+
+    <table class="table col-sm-12">
+        <thead>
+          <tr>
+            <th></th>
+            <th>ID</th>
+            <th>CATEGORYID</th>
+            <th>SUBCATEGORYID</th>
+            <th>PRICE</th>
+            <th>ITEMNAME</th>
+            <th>DESCRIPTION</th>
+            <th>STOCKNUMBER</th>
+            <th></th>
+          </tr>
+        </thead>
+       <tbody>
+          <tr *ngFor="let item of itemListInfo;" >
+            <td><input type="radio" name = "id" id = "id" [value]= "item.id" [(ngModel)]="itemvalue" [value]="item.id" /></td>
+             <td>{{item.id}}</td>     
+            <td>{{item.categoryid}}</td>
+            <td>{{item.subcategoryid}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.itemname}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.stocknumber}}</td>
+          </tr> 
+        </tbody>
+      </table>
+
+      <div class="col-sm-12 modal fade" id="input" data-toggle="modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2>userInfo</h2>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+          <form class="form-group">
+            <div class="modal-body">
+          <input type="hidden" id="id" class="form-control" placeholder="id" [(ngModel)]="itemInfo.id" required [ngModelOptions]="{standalone: true}">
+          <input type="text" id="categoryid" class="form-control" placeholder="categoryid" [(ngModel)]="itemInfo.categoryid" required [ngModelOptions]="{standalone: true}">
+          <input type="text" id="subcategoryid" class="form-control" placeholder="subcategoryid" [(ngModel)]="itemInfo.subcategoryid" required [ngModelOptions]="{standalone: true}">
+          <input type="text" id="price" class="form-control" placeholder="price" [(ngModel)]="itemInfo.price" required [ngModelOptions]="{standalone: true}">
+          <input type="text" id="itemname" class="form-control" placeholder="itemname" [(ngModel)]="itemInfo.itemname" required [ngModelOptions]="{standalone: true}">
+          <input type="text" id="description" class="form-control" placeholder="description" [(ngModel)]="itemInfo.description" required [ngModelOptions]="{standalone: true}">
+          <input type="text" id="stocknumber" class="form-control" placeholder="stocknumber" [(ngModel)]="itemInfo.stocknumber" required [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="infoSubmit()" data-dismiss="modal">submit</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+   </div>
+
+   
+
+
+
+

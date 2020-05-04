@@ -1,0 +1,54 @@
+<div class="col-sm-11 text-center">
+  <button type="button" class="btn btn-success col-sm-2" data-toggle="modal" data-target="#input">add</button>&nbsp;
+  <button type="button" class="btn btn-danger col-sm-2" (click)="delCategoryById()">delete</button>&nbsp;
+  <button type="button" class="btn btn-warning col-sm-2" (click)="updateCategoryInfo()" data-toggle="modal" data-target="#input">update</button>&nbsp;
+  <button type="button" class="btn btn-info col-sm-2">select</button>
+</div>
+   <div class="container-fluid">
+
+    <table class="table col-sm-12">
+        <thead>
+          <tr>
+            <th></th>
+            <th>ID</th>
+            <th>CATEGORYNAME</th>
+            <th>BRIEFDETAILS</th>
+          </tr>
+        </thead>
+       <tbody>
+          <tr *ngFor="let item of categoryListInfo;" >
+            <td><input type="radio" name = "id" id = "id" [value]= "item.id" [(ngModel)]="itemvalue" [value]="item.id" /></td>
+             <td>{{item.id}}</td>     
+            <td>{{item.categoryname}}</td>
+            <td>{{item.briefdetails}}</td>
+          </tr> 
+        </tbody>
+      </table>
+
+      <div class="col-sm-12 modal fade" id="input" data-toggle="modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2>userInfo</h2>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+          <form class="form-group">
+            <div class="modal-body">
+          <input type="hidden" id="id" class="form-control" placeholder="id" [(ngModel)]="categoryinfo.id" required [ngModelOptions]="{standalone: true}">
+          <input type="text" id="categoryname" class="form-control" placeholder="categoryname" [(ngModel)]="categoryinfo.categoryname" required [ngModelOptions]="{standalone: true}">
+          <input type="text" id="briefdetails" class="form-control" placeholder="briefdetails" [(ngModel)]="categoryinfo.briefdetails" required [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="infoSubmit()" data-dismiss="modal">submit</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+   </div>
+
+   
+
+
+
+

@@ -1,0 +1,101 @@
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="jumbotron">
+				<h1>
+					Hello, world!
+				</h1>
+				<p>
+					This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
+				</p>
+				<p>
+					 <a class="btn btn-primary btn-large" href="#">Learn more</a>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="col-md-4 column border" *ngFor="let item of itemsListInfo;">
+			<h3>
+				Product name:<span>{{item.itemname}}</span>
+			</h3>
+				<ul class="list-unstyled mt-3 mb-4">
+					<li>Price:{{item.price}}</li>
+					<li>Discount:</li>
+					<li>Inventory:{{item.stocknumber}}</li>
+				</ul>
+			<p>
+				 <a [routerLink]="['/productDetail']" routerLinkActive="router-link-active" class="nav-link">View details »</a>
+			</p>
+		</div>
+
+	</div>
+</div>
+
+<!-- <div class="col-md-4 column border">
+	<h3>
+		Product name:
+	</h3>
+		<ul class="list-unstyled mt-3 mb-4">
+			<li>Price:</li>
+			<li>Discount:</li>
+			<li>Inventory:</li>
+		</ul>
+		<p>
+			<a [routerLink]="['/productDetail']" routerLinkActive="router-link-active" class="nav-link">View details »</a>
+		</p>
+</div>
+<div class="col-md-4 column border">
+	<h3>
+		Product name:
+	</h3>
+		<ul class="list-unstyled mt-3 mb-4">
+			<li>Price:</li>
+			<li>Discount:</li>
+			<li>Inventory:</li>
+		</ul>
+		<p>
+			<a [routerLink]="['/productDetail']" routerLinkActive="router-link-active" class="nav-link">View details »</a>
+		</p>
+</div>
+<div class="col-md-4 column border">
+	<h3>
+		Product name:
+	</h3>
+		<ul class="list-unstyled mt-3 mb-4">
+			<li>Price:</li>
+			<li>Discount:</li>
+			<li>Inventory:</li>
+		</ul>
+		<p>
+			<a [routerLink]="['/productDetail']" routerLinkActive="router-link-active" class="nav-link">View details »</a>
+		</p>
+	</div>
+
+	<div class="col-md-4 column border">
+		<h3>
+			Product name:
+		</h3>
+			<ul class="list-unstyled mt-3 mb-4">
+				<li>Price:</li>
+				<li>Discount:</li>
+				<li>Inventory:</li>
+			</ul>
+		<p>
+			<a [routerLink]="['/productDetail']" routerLinkActive="router-link-active" class="nav-link">View details »</a>
+		</p>
+	</div>
+	<div class="col-md-4 column border">
+		<h3>
+			Product name:
+		</h3>
+			<ul class="list-unstyled mt-3 mb-4">
+				<li>Price:</li>
+				<li>Discount:</li>
+				<li>Inventory:</li>
+			</ul>
+		<p>
+			<a [routerLink]="['/productDetail']" routerLinkActive="router-link-active" class="nav-link">View details »</a>
+		</p>
+</div>
+ -->

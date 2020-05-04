@@ -1,0 +1,75 @@
+<div class="col-sm-11 text-center">
+  <!-- (click)="triggerForm()" -->
+  <button type="button" class="btn btn-success col-sm-2"  data-toggle="modal" data-target="#input">add</button>&nbsp;
+  <button type="button" class="btn btn-danger col-sm-2" (click)="delSellerById()">delete</button>&nbsp;
+  <button type="button" class="btn btn-warning col-sm-2" (click)="updateInfo()"  data-toggle="modal" data-target="#input">update</button>&nbsp;
+  <button type="button" class="btn btn-info col-sm-2">select</button>
+</div>
+<div class="container-fluid">
+
+    <table class="table .col-md-10. col-lg-10">
+        <thead>
+          <tr>
+            <th></th>
+            <th>ID</th>
+            <th>USERNAME</th>
+            <th>PASSWORD</th>
+            <th>COMPANYNAME</th>
+            <th>GSTIN</th>
+            <th>BRIEFABOUTCOMPANY</th>
+            <th>POSTALADDRESS</th>
+            <th>WEBSITE</th>
+            <th>EMAIL</th>
+            <th>CONTACTNUMBER</th>
+            <th>CREATETIME</th>
+          </tr>
+        </thead>
+       <tbody>
+          <tr *ngFor="let item of sellerListInfo;" >
+            <td><input type="radio" name = "id" id = "id" [value]= "item.id" [(ngModel)]="itemvalue" [value]="item.id" /></td>
+             <td>{{item.id}}</td>
+            <td>{{item.username}}</td>
+            <td>{{item.password}}</td>
+            <td>{{item.companyname}}</td>
+            <td>{{item.gstin}}</td>
+            <td>{{item.briefaboutcompany}}</td>
+            <td>{{item.postaladdress}}</td>
+            <td>{{item.website}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.contactnumber}}</td>
+            <td>{{item.createtime}}</td>
+          </tr> 
+        </tbody>
+      </table>
+      <div class="col-sm-12 modal fade" id="input" data-toggle="modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2>userInfo</h2>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+        <form class="form-group">
+          <div class="modal-body">
+            <input type="hidden" id="id" class="form-control" placeholder="id" [(ngModel)]="userinfo.id" required [ngModelOptions]="{standalone: true}">
+            <input type="text" id="username" class="form-control" placeholder="username" [(ngModel)]="userinfo.username" required [ngModelOptions]="{standalone: true}">
+            <input type="password" id="password" class="form-control" placeholder="password" [(ngModel)]="userinfo.password" required [ngModelOptions]="{standalone: true}">
+            <input type="text" id="companyname" class="form-control" placeholder="companyname" [(ngModel)]="userinfo.companyname" required [ngModelOptions]="{standalone: true}">
+            <input type="text" id="gstin" class="form-control" placeholder="gstin" [(ngModel)]="userinfo.gstin" required [ngModelOptions]="{standalone: true}">
+            <input type="text" id="briefaboutcompany" class="form-control" placeholder="briefaboutcompany" [(ngModel)]="userinfo.briefaboutcompany" required [ngModelOptions]="{standalone: true}">
+            <input type="text" id="postaladdress" class="form-control" placeholder="postaladdress" [(ngModel)]="userinfo.postaladdress" required [ngModelOptions]="{standalone: true}">
+            <input type="text" id="website" class="form-control" placeholder="website" [(ngModel)]="userinfo.website" required [ngModelOptions]="{standalone: true}">
+            <input type="text" id="email" class="form-control" placeholder="email" [(ngModel)]="userinfo.email" required [ngModelOptions]="{standalone: true}">
+            <input type="text" id="contactnumber" class="form-control" placeholder="contactnumber" [(ngModel)]="userinfo.contactnumber" required [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="modal-footer">
+          <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="infoSubmit()" data-dismiss="modal">submit</button>
+        </div>
+        </form>
+        </div>
+        </div>
+      </div>
+   </div>
+
+
+
+

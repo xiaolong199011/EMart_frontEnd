@@ -1,0 +1,319 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="">
+    <a class="navbar-brand" href="#">eMart</a>
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a [routerLink]="['/home']" routerLinkActive="router-link-active" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item active">
+        <a [routerLink]="['/admin']" routerLinkActive="router-link-active" class="nav-link">admin</a>
+      </li>
+      <li class="nav-item active">
+        <a [routerLink]="['/login']" routerLinkActive="router-link-active" class="nav-link">login</a>
+      </li>
+      <li class="nav-item active">
+        <a [routerLink]="['/cart']" routerLinkActive="router-link-active" class="nav-link" data-toggle="modal"
+          data-target="#cart">cart</a>
+      </li>
+      <!-- <li class="nav-item active">
+        <button class="btn btn-outline-success my-2 my-sm-0" (click)="removeSession()">LoginOff</button>
+      </li> -->
+      <li class="nav-item active">
+        <div class="dropdown">
+          <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" 
+              data-toggle="dropdown">
+            Login
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation">
+              <a role="menuitem" tabindex="-1" [routerLink]="['/login']">LoginIn</a>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation">
+              <a role="menuitem" tabindex="-1" href="#" (click)="removeSession()">LoginOff</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="search" data-toggle="modal"
+        data-target="#search">Search</button>
+      <!-- <button type="button" class="btn btn-success col-sm-2" data-toggle="modal" data-target="#search">Search</button> -->
+    </form>
+  </div>
+</nav>
+
+<!-- Cartform -->
+<div class="modal fade table-responsive m-t" id="cart" data-toggle="modal">
+  <div class="modal-dialog" style="max-width: 900px;">
+    <div class="modal-content container-fluid">
+      <div class="modal-header">
+        <h2>Cart</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="row navibottom">
+        <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#report">Report</button>
+        <button type="button" class="btn btn-outline-success" data-toggle="modal"
+          data-target="#viewDiscounts">ViewDiscounts</button>
+        <button type="button" class="btn btn-outline-secondary" data-toggle="modal"
+          data-target="#purchaseHistory">PurchaseHistory</button>
+        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#item">BuyItem</button>
+      </div>
+
+      <table class="table invoice-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>BuyItem</th>
+            <th><a routerLinkActive="router-link-active" class="nav-link" data-toggle="modal"
+                data-target="#purchaseHistory">purchaseHistory</a></th>
+            <th>ViewDiscounts</th>
+            <th>report</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="">
+            <!-- <td><input type="radio" name = "id" id = "id" [value]= "item.id" [(ngModel)]="itemvalue" [value]="item.id" /></td> -->
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="row">
+        <div class="col-md-8"></div>
+        <table class="table invoice-total col-md-4">
+          <tbody>
+            <tr>
+              <td><strong>Total price</strong>
+              </td>
+              <td>&yen;1026.00</td>
+            </tr>
+            <tr>
+              <td><strong>Tax：</strong>
+              </td>
+              <td>&yen;235.98</td>
+            </tr>
+            <tr>
+              <td><strong>Total price && Tax:</strong>
+              </td>
+              <td>&yen;1261.98</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <form class="form-group">
+        <div class="modal-body">
+          <!-- <input type="hidden" id="id" class="form-control" placeholder="id" [(ngModel)]="userinfo.id" required [ngModelOptions]="{standalone: true}"> -->
+
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-lg btn-primary btn-block" type="submit" 
+            data-dismiss="modal">checkout</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="modal fade table-responsive m-t" id="search" data-toggle="modal">
+      <div class="modal-dialog" style="max-width: 900px;">
+        <div class="modal-content container-fluid">
+          <div class="modal-header">
+            <h2>Search</h2>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="row navibottom">
+            <button type="button" class="btn btn-outline-danger" data-toggle="modal"
+              data-target="#report">Report</button>
+            <button type="button" class="btn btn-outline-success" data-toggle="modal"
+              data-target="#viewDiscounts">ViewDiscounts</button>
+            <button type="button" class="btn btn-outline-secondary" data-toggle="modal"
+              data-target="#purchaseHistory">PurchaseHistory</button>
+            <button type="button" class="btn btn-outline-primary" data-toggle="modal"
+              data-target="#item">BuyItem</button>
+          </div>
+          <div class="row navibottom">
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="search" data-toggle="modal"
+                data-target="#search">Search</button>
+            </form>
+          </div>
+          <table class="table invoice-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Item</th>
+                <th>Manufacturer</th>
+                <th>Price</th>
+                <th>TaxAmount</th>
+              </tr>
+            </thead>
+          </table>
+          <form class="form-group">
+            <div class="modal-body">
+              <!-- <input type="hidden" id="id" class="form-control" placeholder="id" [(ngModel)]="userinfo.id" required [ngModelOptions]="{standalone: true}"> -->
+
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-lg btn-primary btn-block" type="submit" 
+                data-dismiss="modal">backTOCheckout</button>
+            </div>
+          </form>
+        </div>
+
+
+        <!-- purchaseHistory -->
+        <div class="modal fade table-responsive m-t" id="purchaseHistory" data-toggle="modal">
+          <div class="modal-dialog" style="max-width: 900px;">
+            <div class="modal-content container-fluid">
+              <div class="modal-header">
+                <h2>Purchase History</h2>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+
+              <table class="table invoice-table">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Item</th>
+                    <th>Amount</th>
+                    <th>Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="">
+                    <!-- <td><input type="radio" name = "id" id = "id" [value]= "item.id" [(ngModel)]="itemvalue" [value]="item.id" /></td> -->
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                  </tr>
+                </tbody>
+              </table>
+              <form class="form-group">
+                <div class="modal-body">
+                  <!-- <input type="hidden" id="id" class="form-control" placeholder="id" [(ngModel)]="userinfo.id" required [ngModelOptions]="{standalone: true}"> -->
+
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-lg btn-primary btn-block" type="submit"
+                    data-dismiss="modal">backTOCheckout</button>
+                </div>
+              </form>
+            </div>
+
+            <!-- search form -->
+
+
+            <!-- Buy Item -->
+            <div class="modal fade table-responsive m-t" id="item" data-toggle="modal">
+              <div class="modal-dialog" style="max-width: 900px;">
+                <div class="modal-content container-fluid">
+                  <div class="modal-header">
+                    <h2>BuyItem</h2>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+
+                  <table class="table invoice-table">
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th>ItemName</th>
+                        <th>Category</th>
+                        <th>Amount</th>
+                        <th>Price</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="">
+                        <!-- <td><input type="radio" name = "id" id = "id" [value]= "item.id" [(ngModel)]="itemvalue" [value]="item.id" /></td> -->
+                        <td></td>
+                        <td></td>
+                        <td></td>
+
+                      </tr>
+                    </tbody>
+                  </table>
+                  <form class="form-group">
+                    <div class="modal-body">
+                      <!-- <input type="hidden" id="id" class="form-control" placeholder="id" [(ngModel)]="userinfo.id" required [ngModelOptions]="{standalone: true}"> -->
+
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn-lg btn-primary btn-block" type="submit"
+                        data-dismiss="modal">backTOCheckout</button>
+                    </div>
+                  </form>
+                </div>
+
+                <div class="modal fade table-responsive m-t" id="viewDiscounts" data-toggle="modal">
+                  <div class="modal-dialog" style="max-width: 900px;">
+                    <div class="modal-content container-fluid">
+                      <div class="modal-header">
+                        <h2>ViewDiscounts</h2>
+                        <button type="button" class="close" data-Vdismiss="modal">&times;</button>
+                      </div>
+
+                      <table class="table invoice-table">
+                        <thead>
+                          <tr>
+                            <th></th>
+                            <th>ItemName</th>
+                            <th>Price</th>
+                            <th>Discount</th>
+                            <th>StartedTime</th>
+                            <th>EndTime</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="">
+                            <td><input type="radio" name="id" id="id" 
+                                 /></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                          </tr>
+                        </tbody>
+                      </table>
+                      <form class="form-group">
+                        <div class="modal-body">
+                          <!-- <input type="hidden" id="id" class="form-control" placeholder="id" [(ngModel)]="userinfo.id" required [ngModelOptions]="{standalone: true}"> -->
+
+                        </div>
+                        <div class="modal-footer">
+                          <button class="btn btn-lg btn-primary btn-block" type="submit" 
+                            data-dismiss="modal">backTOCheckout</button>
+                        </div>
+                      </form>
+                    </div>
+
+                    <div class="modal fade table-responsive m-t" id="report" data-toggle="modal">
+                      <div class="modal-dialog" style="max-width: 900px;">
+                        <div class="modal-content container-fluid">
+                          <div class="modal-header">
+                            <h2>Report</h2>
+                            <button type="button" class="close" data-Vdismiss="modal">&times;</button>
+                          </div>
+                          <div class="row column">
+                            <img alt="140x140" src="../../../assets/pic/test.jpg" class="img-thumbnail" />
+                          </div>
+
+
+                          <form class="form-group">
+                            <div class="modal-body">
+                              <!-- <input type="hidden" id="id" class="form-control" placeholder="id" [(ngModel)]="userinfo.id" required [ngModelOptions]="{standalone: true}"> -->
+
+                            </div>
+                            <div class="modal-footer">
+                              <button class="btn btn-lg btn-primary btn-block" type="submit"
+                                data-dismiss="modal">backTOCheckout</button>
+                            </div>
+                          </form>
+                        </div>
+
+                      </div>
+                    </div>

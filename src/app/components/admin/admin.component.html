@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-1 bg-light text-left">
+    
+        <ul class="navbar-nav">
+            <li class="nav-item">
+              <a [routerLink]="['adminbuyerinfo']" routerLinkActive="router-link-active" class="nav-link">buyerinfo</a>
+            </li>
+            <li class="nav-item">
+              <a [routerLink]="['adminsellerinfo']" routerLinkActive="router-link-active" class="nav-link">sellerinfo</a>
+            </li>
+            <li class="nav-item">
+              <a [routerLink]="['items']" routerLinkActive="router-link-active" class="nav-link">items</a>
+            </li>
+            <li class="nav-item">
+              <a [routerLink]="['categoryInfo']" routerLinkActive="router-link-active" class="nav-link">categoryinfo</a>
+            </li>
+            <li class="nav-item">
+              <a [routerLink]="['subCategoryInfo']" routerLinkActive="router-link-active" class="nav-link">subCategoryInfo</a>
+            </li>
+
+            
+          </ul>
+
+    </div>
+    
+      <div class="col-sm-11">
+        <div class="col-sm-11"><router-outlet></router-outlet></div>
+        </div>
+    </div>
+  </div>

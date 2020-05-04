@@ -1,0 +1,67 @@
+<div class="col-sm-11 text-center">
+  <button type="button" class="btn btn-success col-sm-2" data-toggle="modal" data-target="#input">add</button>&nbsp;
+  <button type="button" class="btn btn-danger col-sm-2" (click)="delSubCategoryById()">delete</button>&nbsp;
+  <button type="button" class="btn btn-warning col-sm-2" (click)="updateSubCategoryInfo()" data-toggle="modal" data-target="#input">update</button>&nbsp;
+  <button type="button" class="btn btn-info col-sm-2">select</button>
+</div>
+   <div class="container-fluid">
+
+    <table class="table col-sm-12">
+        <thead>
+          <tr>
+            <th></th>
+            <th>ID</th>
+            <th>subcategoryname</th>
+            <th>CATEGORYNAME</th>
+            <th>BRIEFDETAILS</th>
+            <th>GST</th>
+          </tr>
+        </thead>
+       <tbody>
+          <tr *ngFor="let item of subCategoryListInfo;" >
+            <td><input type="radio" name = "id" id = "id" [value]= "item.id" [(ngModel)]="itemvalue" [value]="item.id" /></td>
+             <td>{{item.id}}</td>     
+            <td>{{item.subcategoryname}}</td>
+            <td>{{item.category.categoryname}}</td>
+            <td>{{item.briefdetails}}</td>
+            <td>{{item.gst}}</td>
+          </tr> 
+        </tbody>
+      </table>
+
+      <div class="col-sm-12 modal fade" id="input" data-toggle="modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2>userInfo</h2>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+          <form class="form-group">
+            <div class="modal-body">
+          <input type="hidden" id="id" class="form-control" placeholder="id" [(ngModel)]="subCategoryInfo.id" required [ngModelOptions]="{standalone: true}">
+          <input type="text" id="subcategoryname" class="form-control" placeholder="subcategoryname" [(ngModel)]="subCategoryInfo.subcategoryname" required [ngModelOptions]="{standalone: true}">
+          <!-- <input type="text" id="categoryname" class="form-control" placeholder="categoryid" [(ngModel)]="subCategoryInfo.category.categoryname" required [ngModelOptions]="{standalone: true}"> -->
+          <label for="name">category</label>
+          <select class="form-control" name = "category" id = "category" [(ngModel)]="subCategoryInfo.category">
+            <option [value]="item.id" *ngFor="let item of categoryListInfo">{{item.categoryname}}</option>
+            <!-- <option [value]="item" *ngFor="let item of subCategoryListInfo.category">{{item.categoryname}}</option> -->
+          </select>
+          <input type="text" id="briefdetails" class="form-control" placeholder="briefdetails" [(ngModel)]="subCategoryInfo.briefdetails" required [ngModelOptions]="{standalone: true}">
+          <input type="text" id="gst" class="form-control" placeholder="gst" [(ngModel)]="subCategoryInfo.gst" required [ngModelOptions]="{standalone: true}">
+        </div>
+        {{subCategoryInfo.category|json}}
+        <div class="modal-footer">
+          <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="infoSubmit()" data-dismiss="modal">submit</button>
+        </div>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+   </div>
+   {{categoryListInfo|json}}
+   
+
+
+
+
