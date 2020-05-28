@@ -41,8 +41,8 @@
           <input type="hidden" id="id" class="form-control" placeholder="id" [(ngModel)]="subCategoryInfo.id" required [ngModelOptions]="{standalone: true}">
           <input type="text" id="subcategoryname" class="form-control" placeholder="subcategoryname" [(ngModel)]="subCategoryInfo.subcategoryname" required [ngModelOptions]="{standalone: true}">
           <!-- <input type="text" id="categoryname" class="form-control" placeholder="categoryid" [(ngModel)]="subCategoryInfo.category.categoryname" required [ngModelOptions]="{standalone: true}"> -->
-          <label for="name">category</label>
           <select class="form-control" name = "category" id = "category" [(ngModel)]="subCategoryInfo.category">
+            <option value=""style="display:none;">category</option>
             <option [value]="item.id" *ngFor="let item of categoryListInfo">{{item.categoryname}}</option>
             <!-- <option [value]="item" *ngFor="let item of subCategoryListInfo.category">{{item.categoryname}}</option> -->
           </select>

@@ -3,6 +3,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 
 import {Json} from '../../common/json';
 import {Crud} from '../../common/crud';
+import {ComParam} from '../../common/comParam';
 
 @Component({
   selector: 'app-admin-seller-info',
@@ -30,28 +31,31 @@ export class AdminSellerInfoComponent implements OnInit {
   protected items:any[];
   protected checkoutForm:any;
 
-  constructor(public http:HttpClient,public json:Json,public crud:Crud) { }
+  constructor(private http:HttpClient,private json:Json,private crud:Crud, private comParam:ComParam) { }
 
   ngOnInit(): void {
      this.getSellerInfo();
   }
   getSellerInfo(){
-    var controllerURL="/seller/getall/";
-    this.crud.getAllInfo(controllerURL).subscribe((response:any)=>{
+    var seller_getall_path="/user/seller/getall/";
+    var seller_getall_url = this.comParam.zuul_host+seller_getall_path;
+    this.crud.getAllInfo(seller_getall_url).subscribe((response:any)=>{
       this.sellerListInfo = response;
     })
   }
 
   delSellerById(){
-    var controllerURL="/seller/del/";
-    this.crud.delById(controllerURL,this.itemvalue).subscribe((response:any)=>{
+    var seller_delby_path="/user/seller/del/";
+    var seller_delby_url = this.comParam.zuul_host+seller_delby_path;
+    this.crud.delById(seller_delby_url,this.itemvalue).subscribe((response:any)=>{
       this.getSellerInfo();
     });
   }
 
   infoSubmit(){
-    var controllerURL="/seller/save/";
-    return this.crud.saveForm(controllerURL,this.userinfo)
+    var seller_save_path="/user/seller/save/";
+    var seller_save_url = this.comParam.zuul_host+seller_save_path;
+    return this.crud.saveForm(seller_save_url,this.userinfo)
     .subscribe((response)=>{
       this.getSellerInfo();
       this.userinfo={};

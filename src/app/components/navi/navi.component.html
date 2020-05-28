@@ -12,7 +12,7 @@
         <a [routerLink]="['/login']" routerLinkActive="router-link-active" class="nav-link">login</a>
       </li>
       <li class="nav-item active">
-        <a [routerLink]="['/cart']" routerLinkActive="router-link-active" class="nav-link" data-toggle="modal"
+        <a [routerLink]="['/cart']" routerLinkActive="router-link-active" class="nav-link" (click)="getShopCart()" data-toggle="modal"
           data-target="#cart">cart</a>
       </li>
       <!-- <li class="nav-item active">
@@ -57,29 +57,30 @@
         <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#report">Report</button>
         <button type="button" class="btn btn-outline-success" data-toggle="modal"
           data-target="#viewDiscounts">ViewDiscounts</button>
-        <button type="button" class="btn btn-outline-secondary" data-toggle="modal"
+        <button type="button" class="btn btn-outline-secondary" (click)="getPurchaseHistory()" data-toggle="modal"
           data-target="#purchaseHistory">PurchaseHistory</button>
-        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#item">BuyItem</button>
+        <button type="button" class="btn btn-outline-primary" (click)="getItemsInfo()" data-toggle="modal" data-target="#item">BuyItem</button>
       </div>
 
       <table class="table invoice-table">
         <thead>
           <tr>
             <th></th>
-            <th>BuyItem</th>
-            <th><a routerLinkActive="router-link-active" class="nav-link" data-toggle="modal"
-                data-target="#purchaseHistory">purchaseHistory</a></th>
-            <th>ViewDiscounts</th>
-            <th>report</th>
+            <th>itemname</th>
+            <th>stocknumber</th>
+            <th>price</th>
+            <th>datetime</th>
           </tr>
         </thead>
+        
         <tbody>
-          <tr *ngFor="">
-            <!-- <td><input type="radio" name = "id" id = "id" [value]= "item.id" [(ngModel)]="itemvalue" [value]="item.id" /></td> -->
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+          <tr *ngFor="let item of TransactionItemShopCartListInfo">
+            
+            <td><input type="radio" name = "id" id = "id" [value]= "item.id" [(ngModel)]="itemvalue"/></td>
+            <td>{{item.itemname}}</td>
+            <td>{{item.stocknumber}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.datetime|date:'yyyy-MM-dd HH:mm:ss'}}</td>
           </tr>
         </tbody>
       </table>
@@ -111,7 +112,7 @@
 
         </div>
         <div class="modal-footer">
-          <button class="btn btn-lg btn-primary btn-block" type="submit" 
+          <button class="btn btn-lg btn-primary btn-block" type="submit" (click) = "checkoutCart()"
             data-dismiss="modal">checkout</button>
         </div>
       </form>
@@ -178,18 +179,20 @@
                 <thead>
                   <tr>
                     <th></th>
-                    <th>Item</th>
-                    <th>Amount</th>
-                    <th>Price</th>
+                    <th>itemname</th>
+                    <th>stocknumber</th>
+                    <th>price</th>
+                    <th>datetime</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="">
-                    <!-- <td><input type="radio" name = "id" id = "id" [value]= "item.id" [(ngModel)]="itemvalue" [value]="item.id" /></td> -->
-                    <td></td>
-                    <td></td>
-                    <td></td>
-
+                  <tr *ngFor="let item of TransactionItemPurchaseHistoryListInfo">
+            
+                    <td><input type="radio" name = "id" id = "id" [value]= "item.id" [(ngModel)]="itemvalue"/></td>
+                    <td>{{item.itemname}}</td>
+                    <td>{{item.stocknumber}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.datetime|date:'yyyy-MM-dd HH:mm:ss'}}</td>
                   </tr>
                 </tbody>
               </table>
@@ -222,18 +225,16 @@
                       <tr>
                         <th></th>
                         <th>ItemName</th>
-                        <th>Category</th>
-                        <th>Amount</th>
-                        <th>Price</th>
+                        <th>stocknumber</th>
+                        <th>price</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="">
-                        <!-- <td><input type="radio" name = "id" id = "id" [value]= "item.id" [(ngModel)]="itemvalue" [value]="item.id" /></td> -->
-                        <td></td>
-                        <td></td>
-                        <td></td>
-
+                      <tr *ngFor="let item of ItemsListInfo">
+                        <td><input type="radio" name = "id" id = "id" [value]= "item.id" [(ngModel)]="itemvalue" /></td>
+                        <td>{{item.itemname}}</td>
+                        <td>{{item.stocknumber}}</td>
+                        <td>{{item.price}}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -243,8 +244,8 @@
 
                     </div>
                     <div class="modal-footer">
-                      <button class="btn btn-lg btn-primary btn-block" type="submit"
-                        data-dismiss="modal">backTOCheckout</button>
+                      <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="transactionSave()"
+                        data-dismiss="modal">add to shopCart</button>
                     </div>
                   </form>
                 </div>

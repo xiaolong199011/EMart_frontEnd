@@ -1,8 +1,9 @@
-import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
+import { Component, OnInit,Renderer2,ElementRef} from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import {Json} from '../../common/json';
 import {Crud} from '../../common/crud';
-
+import {ComParam} from '../../common/comParam';
+declare var $:any;
 @Component({
   selector: 'app-admin-buyer-info',
   templateUrl: './admin-buyer-info.component.html',
@@ -24,28 +25,32 @@ export class AdminBuyerInfoComponent implements OnInit {
     mobilenumber:''
   };
 
-  constructor(public http:HttpClient,public json:Json,public crud:Crud) { }
+  constructor(public http:HttpClient,public json:Json,public crud:Crud,private renderer: Renderer2,private el: ElementRef,private comParam:ComParam) { }
 
   ngOnInit(): void {
-    this.getBuyerInfo()
+    //init page
+    this.getBuyerInfo();
   }
+  //euraka:
   getBuyerInfo(){
-    var controllerURL="/buyer/getall/";
-    this.crud.getAllInfo(controllerURL).subscribe((response:any)=>{
+    var buyer_getall_path="/user/buyer/getall/";
+    var buyer_getall_url = this.comParam.zuul_host+buyer_getall_path;
+    this.crud.getAllInfo(buyer_getall_url).subscribe((response:any)=>{
       this.buyerListInfo = response;
     })
-    //console.log(this.crud.getAllInfo(this.api));
   }
   delBuyerId(){
-    var controllerURL="/buyer/del/";
-    this.crud.delById(controllerURL,this.itemvalue).subscribe((response:any)=>{
+    var buyer_delby_path="/user/buyer/del/";
+    var buyer_delby_url = this.comParam.zuul_host+buyer_delby_path;
+    this.crud.delById(buyer_delby_url,this.itemvalue).subscribe((response:any)=>{
       this.getBuyerInfo();
     });
     
   }
   infoSubmit(){
-    var controllerURL="/buyer/save/";
-    return this.crud.saveForm(controllerURL,this.userinfo)
+    var buyer_save_path="/user/buyer/save/";
+    var buyer_save_url = this.comParam.zuul_host+buyer_save_path;
+    return this.crud.saveForm(buyer_save_url,this.userinfo)
     .subscribe((response)=>{
       this.getBuyerInfo();
       this.userinfo={};
@@ -55,4 +60,5 @@ export class AdminBuyerInfoComponent implements OnInit {
   updateInfo(){
     this.userinfo=this.crud.updateInfo(this.buyerListInfo,this.itemvalue);
   }
+
 }

@@ -2,6 +2,7 @@ import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import {Json} from '../../common/json';
 import {Crud} from '../../common/crud';
+import {ComParam} from '../../common/comParam';
 
 @Component({
   selector: 'app-subcategoryInfo',
@@ -33,7 +34,7 @@ export class SubcategoryInfoComponent implements OnInit {
 
  
 
-  constructor(public http:HttpClient,public json:Json,public crud:Crud) { }
+  constructor(private http:HttpClient,private json:Json,private crud:Crud, private comParam:ComParam) { }
 
   ngOnInit() {
     this.getSubCategoryInfo();
@@ -41,23 +42,26 @@ export class SubcategoryInfoComponent implements OnInit {
   }
 
   getSubCategoryInfo(){
-    var controllerURL="/subcategory/getall/";
-    this.crud.getAllInfo(controllerURL).subscribe((response:any)=>{
+    var subCategoryInfo_getall_path="/items/subcategory/getall/";
+    var subCategoryInfo_getall_url = this.comParam.zuul_host+subCategoryInfo_getall_path;
+    this.crud.getAllInfo(subCategoryInfo_getall_url).subscribe((response:any)=>{
       this.subCategoryListInfo = response;
     })
   }
 
   delSubCategoryById(){
-    var controllerURL="/subcategory/del/";
-    this.crud.delById(controllerURL,this.itemvalue).subscribe((response:any)=>{
+    var subCategoryInfo_delby_path="/items/subcategory/del/";
+    var subCategoryInfo_delby_url = this.comParam.zuul_host+subCategoryInfo_delby_path;
+    this.crud.delById(subCategoryInfo_delby_url,this.itemvalue).subscribe((response:any)=>{
       this.getSubCategoryInfo();
     });
     
   }
   infoSubmit(){
-    var controllerURL="/subcategory/save/";    
+    var subCategoryInfo_save_path="/items/subcategory/save/";    
+    var subCategoryInfo_save_url = this.comParam.zuul_host+subCategoryInfo_save_path;
     this.subCategoryInfo.category=this.crud.updateInfo(this.categoryListInfo,Number(this.subCategoryInfo.category));
-    return this.crud.saveForm(controllerURL,this.subCategoryInfo)
+    return this.crud.saveForm(subCategoryInfo_save_url,this.subCategoryInfo)
     .subscribe((response)=>{
       this.getSubCategoryInfo();
       this.subCategoryInfo={};
@@ -69,8 +73,9 @@ export class SubcategoryInfoComponent implements OnInit {
   }
 
   getCategoryInfo(){
-    var controllerURL="/category/getall/";
-    this.crud.getAllInfo(controllerURL).subscribe((response:any)=>{
+    var categoryInfo_getall_path="/items/category/getall/";
+    var categoryInfo_getall_url = this.comParam.zuul_host+categoryInfo_getall_path;
+    this.crud.getAllInfo(categoryInfo_getall_url).subscribe((response:any)=>{
       
       this.categoryListInfo = response;
     })

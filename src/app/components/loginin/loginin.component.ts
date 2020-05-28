@@ -3,6 +3,7 @@ import { HttpClient,HttpHeaders, HttpParams } from '@angular/common/http';
 import {Json} from '../../common/json';
 import {Crud} from '../../common/crud';
 import { Router } from '@angular/router';
+import {ComParam} from '../../common/comParam';
 
 @Component({
   selector: 'app-loginin',
@@ -24,7 +25,7 @@ export class LogininComponent implements OnInit {
     password:'',
     // lastLoginTime:new Date()
     roleList:['admin','buyer','seller'],
-    role:'buyer'
+    role:''
   }
 
   responseInfo:any={
@@ -36,19 +37,20 @@ export class LogininComponent implements OnInit {
     token:''
   }
 
-  constructor(public http:HttpClient,public json:Json,public crud:Crud,private router: Router) { }
+  constructor(public http:HttpClient,public json:Json,public crud:Crud,private router: Router,private comParam:ComParam) { }
 
   ngOnInit(): void {
   }
 
   loginSubmit(){
     const httpOptions = {headers:new HttpHeaders({'Content-Type':'application/json'})};
-    var api = '/user/login/';
-     //this.crud.saveForm(api,this.userinfo);
-     this.crud.saveFormWithJsonString(api,this.userinfo).subscribe((response:any)=>{
+    var login_path = '/user/unknownUser/login/';
+    var login_url = this.comParam.zuul_host+login_path;
+      this.crud.saveFormWithJsonString(login_url,this.userinfo).subscribe((response:any)=>{
       this.responseInfo = response;
       if(200===this.responseInfo.errornum){
         sessionStorage.setItem('token', this.responseInfo.token);
+        sessionStorage.setItem('userid', this.responseInfo.id);
         this.router.navigate(['home']);
       }else{
         alert(this.responseInfo.errormsg);

@@ -7,9 +7,8 @@
     <input type="password" id="password" class="form-control" placeholder="password" [(ngModel)]="userinfo.password"
       required [ngModelOptions]="{standalone: true}">
     <!-- <input type="text" id="lastLoginTime" class="form-control" placeholder="lastLoginTime" [(ngModel)]="userinfo.lastLoginTime" required [ngModelOptions]="{standalone: true}"> -->
-    <label for="name">role</label>
     <select class="form-control" name="role" id="role" [(ngModel)]="userinfo.role">
-      <option selected="selected" value="">请选择</option>
+      <option value="" style="display:none;">role</option>
       <option [value]="item" *ngFor="let item of userinfo.roleList">{{item}}</option>
     </select>
 

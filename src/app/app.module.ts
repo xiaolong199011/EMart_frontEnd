@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,8 +25,6 @@ import { Json } from './common/json';
 import {ComParam} from './common/comParam';
 import {JwtInterceptor} from './interceptor/jwt.interceptor';
 import {BootstrapCom} from './common/bootstrapCom'
-
-
 
 @NgModule({
   declarations: [
@@ -51,10 +50,9 @@ import {BootstrapCom} from './common/bootstrapCom'
     HttpClientModule,
     HttpClientJsonpModule,
     
-    
   ],
   //exports:[Crud,Json],
-  providers: [Crud,Json,ComParam,{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },BootstrapCom],
+  providers: [Crud,Json,ComParam,{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },BootstrapCom,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

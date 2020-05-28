@@ -16,6 +16,7 @@
 	</div>
 	<div class="row clearfix">
 		<div class="col-md-4 column border" *ngFor="let item of itemsListInfo;">
+			<img src="http://localhost:8086/upload/{{item.filename}}">
 			<h3>
 				Product name:<span>{{item.itemname}}</span>
 			</h3>
@@ -23,9 +24,10 @@
 					<li>Price:{{item.price}}</li>
 					<li>Discount:</li>
 					<li>Inventory:{{item.stocknumber}}</li>
+					
 				</ul>
 			<p>
-				 <a [routerLink]="['/productDetail']" routerLinkActive="router-link-active" class="nav-link">View details »</a>
+				 <a [routerLink]="['/productDetail/']" [queryParams]="{id:item.id}" routerLinkActive="router-link-active" class="nav-link">View details »</a>
 			</p>
 		</div>
 

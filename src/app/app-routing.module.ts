@@ -31,10 +31,10 @@ const routes: Routes = [
       {path:'**',redirectTo:'WelcomePageComponent',canActivate: [SigninGuard]}
     ]
   },
-  {path:'productDetail',component:ProductDetailComponent ,canActivate: [SigninGuard]},
+  {path:'productDetail',component:ProductDetailComponent},
   {path:'navi',component:NaviComponent ,canActivate: [SigninGuard]},
   {path:'cart',component:CartComponent ,canActivate: [SigninGuard]},
-  {path:'home',component:HomeComponent,canActivate: [SigninGuard]},
+  {path:'home',component:HomeComponent},
   {path:'admin',component:AdminComponent ,canActivate: [SigninGuard]},
   {path:'login',component:LogininComponent },
   {path:'register',component:RegisterComponent},
